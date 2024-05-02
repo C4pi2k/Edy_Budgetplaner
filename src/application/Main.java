@@ -35,7 +35,7 @@ public class Main extends Application {
             Scene scene = new Scene(root, 1600, 800);
             primaryStage.setScene(scene);
             
-            // Create DataStorage instance
+            // Create DataStorage instance (an instance for every combination of MONTHS x WEEKS x WEEKDAYS)
             appStorage = new DataStorage[336];
             initializeStorage();
 
@@ -106,9 +106,6 @@ public class Main extends Application {
                 // Change text color to red for selected label
                 register.setTextFill(Color.RED);
 
-                // Update the display field
-                updateDisplayField();
-
                 // Update input fields 
                 updateInputFields();
             });
@@ -128,32 +125,6 @@ public class Main extends Application {
         label.setTextFill(Color.BLACK);
 
         return label;
-    }
-
-    // Method to update the display field based on selected labels
-    private void updateDisplayField() {
-        StringBuilder textBuilder = new StringBuilder();
-
-        // Check if at least one label is selected from each row
-        boolean allRowsSelected = true;
-        for (Label label : selectedLabels) {
-            if (label == null) {
-                allRowsSelected = false;
-                break;
-            }
-        }
-
-        // If all rows are selected, concatenate the text from selected labels
-        if (allRowsSelected) {
-            for (Label label : selectedLabels) {
-                textBuilder.append(label.getText()).append(" ");
-            }
-        } else {
-            textBuilder.append("Select one label from each row...");
-        }
-
-        // Update the display field
-        displayField.setText(textBuilder.toString());
     }
 
     // Method to update input fields based on selected label
