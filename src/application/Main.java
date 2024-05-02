@@ -28,6 +28,12 @@ public class Main extends Application {
     private VBox inputFieldsContainer;
     private DataStorage[] appStorage;
 
+    // AI Declaration for start
+    // Pretty much the entirety of the start-method was written with the help of ChatGPT 3.5
+    // To avoid learning the whole javaFX library, I instead worked with prompts which gradually stacked on top of each other.
+    // Everything started with an input like "I need to display a bunch of buttons which a user can click" and this lead e.g. to the 4 addRow-method calls.
+    // The only thing that was implemented completely by myself in this method (and throughout the whole app) was the implementation of my "storage". 
+    // From the models to their usage in the app I did all by myself. Meaning I asked GPT 3.5 on how to display data and stuff, yet the actual datamodels and how they would be used was done by me.
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -72,6 +78,10 @@ public class Main extends Application {
         }
     }
 
+    // AI Declaration for initializeStorage
+    // Written my myself. No AI-Support.
+    
+    // Initialization of the storage and their id's
     private void initializeStorage() {
     	int position = 0;
     	for(String month : MONTHS) {
@@ -84,6 +94,9 @@ public class Main extends Application {
     	}
 	}
 
+    // AI Declaration for addRow
+    // Written by GPT 3.5, improved by me
+
 	// Method to add registers to a row
     private void addRow(VBox container, int rowIndex, String[] labels) {
         HBox row = new HBox();
@@ -92,7 +105,6 @@ public class Main extends Application {
 
         for (String label : labels) {
             Label register = createLabel(label);
-            final int colIndex = row.getChildren().size(); // Column index of this label
 
             register.setOnMouseClicked(event -> {
                 // Revert previously selected label to black
@@ -115,6 +127,9 @@ public class Main extends Application {
         container.getChildren().add(row);
     }
 
+    // AI Declaration for addRow
+    // Written by GPT 3.5
+    
     // Method to create a label with initial style
     private Label createLabel(String text) {
         Label label = new Label(text);
@@ -126,6 +141,9 @@ public class Main extends Application {
 
         return label;
     }
+
+    // AI Declaration for addRow
+    // Mostly written by GPT 3.5. As mentioned in the AI Declaration for the start method, I created most of the method with GPT 3.5, yet the handling of the data was made by myself.
 
     // Method to update input fields based on selected label
     private void updateInputFields() {
@@ -140,64 +158,67 @@ public class Main extends Application {
     	int dataStorageId = findCurrentDataStorageInstance();
             
     	if(selectedLabels[3] != null) {
-    	if (selectedLabels[3].getText().equals(Category.EINNAHMEN_GESAMT_NETTO.label)) {
-    		addInputFieldWithLabel("Einnahmen gesamt (Netto):", "Input 2", appStorage[dataStorageId].getEinnahmenGesamtNetto().einnahmenGesamtNettoProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.SPARZIEL.label)) {
-    		addInputFieldWithLabel("Sparziel gesamt", "Input 1", appStorage[dataStorageId].getSparziel().sparzielGesamtProperty());
-    		addInputFieldWithLabel("Sparziel effektiv", "Input 2", appStorage[dataStorageId].getSparziel().sparzielEffektivProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.WOHNKOSTEN.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getWohnkosten().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten Wohnen effektiv", "Input 2", appStorage[dataStorageId].getWohnkosten().kostenEffektivProperty());
-    		addInputFieldWithLabel("Wohn- und Nebenkosten", "Input 3", appStorage[dataStorageId].getWohnkosten().wohnUndNebenkostenProperty());
-    		addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getWohnkosten().unerwarteteKostenProperty());
-    		addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.VERSICHERUNG_UND_VORSORGE.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getVersicherungUndVorsorge().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getVersicherungUndVorsorge().kostenEffektivProperty());
-    		addInputFieldWithLabel("Krankenversicherung", "Input 3", appStorage[dataStorageId].getVersicherungUndVorsorge().krankenVersicherungProperty());
-    		addInputFieldWithLabel("Hausrat-, Hatfpflicht-, Rechtschutzversicherung", "Input 4", appStorage[dataStorageId].getVersicherungUndVorsorge().hausratHatfpflichtRechtschutzversicherungProperty());
-    		addInputFieldWithLabel("3. Säule", "Input 5", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
-    		addInputFieldWithLabel("Unerwartete Kosten", "Input 6", appStorage[dataStorageId].getVersicherungUndVorsorge().unerwarteteKostenProperty());
-    		addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.TWINT.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getTwint().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getTwint().kostenEffektivProperty());
-    		addInputFieldWithLabel("Ueberweisung Person A", "Input 3", appStorage[dataStorageId].getTwint().ueberweisungPersonAProperty());
-    		addInputFieldWithLabel("Ueberweisung Person B", "Input 4", appStorage[dataStorageId].getTwint().ueberweisungPersonBProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.AUTO.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getAuto().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getAuto().kostenEffektivProperty());
-    		addInputFieldWithLabel("Reparatur, Versicherung", "Input 3", appStorage[dataStorageId].getAuto().reparaturVersicherungProperty());
-    		addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getAuto().unerwarteteKostenProperty());
-    		addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.VERSCHIEDENES.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getVerschiedenes().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getVerschiedenes().kostenEffektivProperty());
-    		addInputFieldWithLabel("Internet, Netflix, Mobile", "Input 3", appStorage[dataStorageId].getVerschiedenes().internetNetflixMobileProperty());
-    		addInputFieldWithLabel("Schulgeld", "Input 4", appStorage[dataStorageId].getVerschiedenes().schulgeldProperty());
-    		addInputFieldWithLabel("Kinderbetreuung, Putzfrau", "Input 5", appStorage[dataStorageId].getVerschiedenes().kinderbetreuungProperty());
-    		addInputFieldWithLabel("Hobbys Kinder", "Input 6", appStorage[dataStorageId].getVerschiedenes().hobbysKinderProperty());
-    		addInputFieldWithLabel("Hobbys Erwachsene", "Input 7", appStorage[dataStorageId].getVerschiedenes().hobbysErwachseneProperty());
-    		addInputFieldWithLabel("Unerwartete Kosten", "Input 8", appStorage[dataStorageId].getVerschiedenes().unerwarteteKostenProperty());
-    		addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.STEUERN.label)) {
-    		addInputFieldWithLabel("Steuern gesamt", "Input 1", appStorage[dataStorageId].getSteuern().steuernGesamtProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.FERIEN.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getFerien().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getFerien().kostenEffektivProperty());
-    		addInputFieldWithLabel("Unterkunft", "Input 3", appStorage[dataStorageId].getFerien().unterkunftProperty());
-    		addInputFieldWithLabel("Ausfluege, Essen, Diverses", "Input 4", appStorage[dataStorageId].getFerien().ausfluegeEssenDiversesProperty());
-    		addInputFieldWithLabel("Unerwartete Kosten", "Input 5", appStorage[dataStorageId].getFerien().unerwarteteKostenProperty());
-    		addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    	} else if (selectedLabels[3].getText().equals(Category.AUSGABEN_EC_ODER_KREDITKARTE.label)) {
-    		addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenGeplantProperty());
-    		addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenEffektivProperty());
-    		addInputFieldWithLabel("Unerwartete Rechnungen", "Input 3", appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteRechnungenProperty());
-    		addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteKostenProperty());
-    		addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    	}
+    		if (selectedLabels[3].getText().equals(Category.EINNAHMEN_GESAMT_NETTO.label)) {
+    			addInputFieldWithLabel("Einnahmen gesamt (Netto):", "Input 2", appStorage[dataStorageId].getEinnahmenGesamtNetto().einnahmenGesamtNettoProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.SPARZIEL.label)) {
+    			addInputFieldWithLabel("Sparziel gesamt", "Input 1", appStorage[dataStorageId].getSparziel().sparzielGesamtProperty());
+    			addInputFieldWithLabel("Sparziel effektiv", "Input 2", appStorage[dataStorageId].getSparziel().sparzielEffektivProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.WOHNKOSTEN.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getWohnkosten().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten Wohnen effektiv", "Input 2", appStorage[dataStorageId].getWohnkosten().kostenEffektivProperty());
+    			addInputFieldWithLabel("Wohn- und Nebenkosten", "Input 3", appStorage[dataStorageId].getWohnkosten().wohnUndNebenkostenProperty());
+    			addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getWohnkosten().unerwarteteKostenProperty());
+    			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.VERSICHERUNG_UND_VORSORGE.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getVersicherungUndVorsorge().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getVersicherungUndVorsorge().kostenEffektivProperty());
+    			addInputFieldWithLabel("Krankenversicherung", "Input 3", appStorage[dataStorageId].getVersicherungUndVorsorge().krankenVersicherungProperty());
+    			addInputFieldWithLabel("Hausrat-, Hatfpflicht-, Rechtschutzversicherung", "Input 4", appStorage[dataStorageId].getVersicherungUndVorsorge().hausratHatfpflichtRechtschutzversicherungProperty());
+    			addInputFieldWithLabel("3. Säule", "Input 5", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
+    			addInputFieldWithLabel("Unerwartete Kosten", "Input 6", appStorage[dataStorageId].getVersicherungUndVorsorge().unerwarteteKostenProperty());
+    			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.TWINT.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getTwint().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getTwint().kostenEffektivProperty());
+    			addInputFieldWithLabel("Ueberweisung Person A", "Input 3", appStorage[dataStorageId].getTwint().ueberweisungPersonAProperty());
+    			addInputFieldWithLabel("Ueberweisung Person B", "Input 4", appStorage[dataStorageId].getTwint().ueberweisungPersonBProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.AUTO.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getAuto().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getAuto().kostenEffektivProperty());
+    			addInputFieldWithLabel("Reparatur, Versicherung", "Input 3", appStorage[dataStorageId].getAuto().reparaturVersicherungProperty());
+    			addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getAuto().unerwarteteKostenProperty());
+    			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.VERSCHIEDENES.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getVerschiedenes().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getVerschiedenes().kostenEffektivProperty());
+    			addInputFieldWithLabel("Internet, Netflix, Mobile", "Input 3", appStorage[dataStorageId].getVerschiedenes().internetNetflixMobileProperty());
+    			addInputFieldWithLabel("Schulgeld", "Input 4", appStorage[dataStorageId].getVerschiedenes().schulgeldProperty());
+    			addInputFieldWithLabel("Kinderbetreuung, Putzfrau", "Input 5", appStorage[dataStorageId].getVerschiedenes().kinderbetreuungProperty());
+    			addInputFieldWithLabel("Hobbys Kinder", "Input 6", appStorage[dataStorageId].getVerschiedenes().hobbysKinderProperty());
+    			addInputFieldWithLabel("Hobbys Erwachsene", "Input 7", appStorage[dataStorageId].getVerschiedenes().hobbysErwachseneProperty());
+    			addInputFieldWithLabel("Unerwartete Kosten", "Input 8", appStorage[dataStorageId].getVerschiedenes().unerwarteteKostenProperty());
+    			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.STEUERN.label)) {
+    			addInputFieldWithLabel("Steuern gesamt", "Input 1", appStorage[dataStorageId].getSteuern().steuernGesamtProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.FERIEN.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getFerien().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getFerien().kostenEffektivProperty());
+    			addInputFieldWithLabel("Unterkunft", "Input 3", appStorage[dataStorageId].getFerien().unterkunftProperty());
+    			addInputFieldWithLabel("Ausfluege, Essen, Diverses", "Input 4", appStorage[dataStorageId].getFerien().ausfluegeEssenDiversesProperty());
+    			addInputFieldWithLabel("Unerwartete Kosten", "Input 5", appStorage[dataStorageId].getFerien().unerwarteteKostenProperty());
+    			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
+    		} else if (selectedLabels[3].getText().equals(Category.AUSGABEN_EC_ODER_KREDITKARTE.label)) {
+    			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenGeplantProperty());
+    			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenEffektivProperty());
+    			addInputFieldWithLabel("Unerwartete Rechnungen", "Input 3", appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteRechnungenProperty());
+    			addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteKostenProperty());
+    			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
+    		}
     	}
     }
+
+    // AI Declaration for addRow
+    // Written by me
 
 	private String craftLabelWhenAllRowsSelected() {
 		if (selectedLabels[0] != null && selectedLabels[1] != null && selectedLabels[2] != null && selectedLabels[3] != null) {
@@ -207,6 +228,10 @@ public class Main extends Application {
 		}
 	}
 
+    // AI Declaration for addRow
+    // Written by me
+
+	// Method to handle the current combination of buttons selected and loading the actual dataset
 	private int findCurrentDataStorageInstance() {
 		DataStorage currentDataStorage = new DataStorage("", "", "", 0);
 		if(selectedLabels[0] == null || selectedLabels[1] == null || selectedLabels[2] == null || selectedLabels[3] == null) {
@@ -222,6 +247,9 @@ public class Main extends Application {
     	return currentDataStorage.getPosition();
     }
 
+    // AI Declaration for addRow
+    // Written by GPT 3.5, improved by me
+
 	// Method to add an input field with label to the input fields container
     private void addInputFieldWithLabel(String labelText, String inputPrompt, StringProperty property) {
         Label label = new Label(labelText);
@@ -230,7 +258,11 @@ public class Main extends Application {
         textField.textProperty().bindBidirectional(property);
         inputFieldsContainer.getChildren().addAll(label, textField);
     }
+
+    // AI Declaration for addRow
+    // Written by me
     
+    // Method to create inputfields that only measure twenty characters at max
     private void addTwentyCharInputField(StringProperty property) {
         TextField textField = new TextField("");
         textField.textProperty().bindBidirectional(property);
@@ -238,19 +270,30 @@ public class Main extends Application {
         inputFieldsContainer.getChildren().addAll(textField);
     }
     
+
+
+    // AI Declaration for addRow
+    // Written by GPT 3.5, improved by me
+    
+    // 
     public void addTextLimiter(final TextField textField) {
     	textField.textProperty().addListener(new ChangeListener<String>() {
     		int maxLength = 20;
     		@Override
     		public void changed(ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
     			if (textField.getText().length() > maxLength) {
-    				String s = textField.getText().substring(0, maxLength);
-    				textField.setText(s);
+    				String userInputString = textField.getText().substring(0, maxLength);
+    				textField.setText(userInputString);
     			}
     		}
     	});
     }
+
+
+    // AI Declaration for addRow
+    // Written by GPT 3.5
     
+    // 
     public static void main(String[] args) {
         launch(args);
     }
