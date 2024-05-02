@@ -1,6 +1,17 @@
 package application;
 
 
+import static application.Category.AUSGABEN_EC_ODER_KREDITKARTE;
+import static application.Category.AUTO;
+import static application.Category.EINNAHMEN_GESAMT_NETTO;
+import static application.Category.FERIEN;
+import static application.Category.SPARZIEL;
+import static application.Category.STEUERN;
+import static application.Category.TWINT;
+import static application.Category.VERSCHIEDENES;
+import static application.Category.VERSICHERUNG_UND_VORSORGE;
+import static application.Category.WOHNKOSTEN;
+
 import application.datastorage.DataStorage;
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
@@ -21,7 +32,7 @@ public class Main extends Application {
 	private static final String[] MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 	private static final String[] WEEKS = new String[]{"Week 1", "Week 2", "Week 3", "Week 4"};
 	private static final String[] WEEKDAYS = new String[]{"Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"};
-	private static final String[] VIEWS = new String[]{Category.EINNAHMEN_GESAMT_NETTO.label, Category.SPARZIEL.label, Category.WOHNKOSTEN.label, Category.VERSICHERUNG_UND_VORSORGE.label, Category.TWINT.label, Category.AUTO.label, Category.VERSCHIEDENES.label, Category.STEUERN.label, Category.FERIEN.label, Category.AUSGABEN_EC_ODER_KREDITKARTE.label};
+	private static final String[] VIEWS = new String[]{EINNAHMEN_GESAMT_NETTO.stringValue, SPARZIEL.stringValue, WOHNKOSTEN.stringValue, VERSICHERUNG_UND_VORSORGE.stringValue, TWINT.stringValue, AUTO.stringValue, VERSCHIEDENES.stringValue, STEUERN.stringValue, FERIEN.stringValue, AUSGABEN_EC_ODER_KREDITKARTE.stringValue};
 	
 	private Label displayField;
     private Label[] selectedLabels;
@@ -158,18 +169,18 @@ public class Main extends Application {
     	int dataStorageId = findCurrentDataStorageInstance();
             
     	if(selectedLabels[3] != null) {
-    		if (selectedLabels[3].getText().equals(Category.EINNAHMEN_GESAMT_NETTO.label)) {
+    		if (selectedLabels[3].getText().equals(EINNAHMEN_GESAMT_NETTO.stringValue)) {
     			addInputFieldWithLabel("Einnahmen gesamt (Netto):", "Input 2", appStorage[dataStorageId].getEinnahmenGesamtNetto().einnahmenGesamtNettoProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.SPARZIEL.label)) {
+    		} else if (selectedLabels[3].getText().equals(SPARZIEL.stringValue)) {
     			addInputFieldWithLabel("Sparziel gesamt", "Input 1", appStorage[dataStorageId].getSparziel().sparzielGesamtProperty());
     			addInputFieldWithLabel("Sparziel effektiv", "Input 2", appStorage[dataStorageId].getSparziel().sparzielEffektivProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.WOHNKOSTEN.label)) {
+    		} else if (selectedLabels[3].getText().equals(WOHNKOSTEN.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getWohnkosten().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten Wohnen effektiv", "Input 2", appStorage[dataStorageId].getWohnkosten().kostenEffektivProperty());
     			addInputFieldWithLabel("Wohn- und Nebenkosten", "Input 3", appStorage[dataStorageId].getWohnkosten().wohnUndNebenkostenProperty());
     			addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getWohnkosten().unerwarteteKostenProperty());
     			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.VERSICHERUNG_UND_VORSORGE.label)) {
+    		} else if (selectedLabels[3].getText().equals(VERSICHERUNG_UND_VORSORGE.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getVersicherungUndVorsorge().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getVersicherungUndVorsorge().kostenEffektivProperty());
     			addInputFieldWithLabel("Krankenversicherung", "Input 3", appStorage[dataStorageId].getVersicherungUndVorsorge().krankenVersicherungProperty());
@@ -177,18 +188,18 @@ public class Main extends Application {
     			addInputFieldWithLabel("3. Säule", "Input 5", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
     			addInputFieldWithLabel("Unerwartete Kosten", "Input 6", appStorage[dataStorageId].getVersicherungUndVorsorge().unerwarteteKostenProperty());
     			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.TWINT.label)) {
+    		} else if (selectedLabels[3].getText().equals(TWINT.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getTwint().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getTwint().kostenEffektivProperty());
     			addInputFieldWithLabel("Ueberweisung Person A", "Input 3", appStorage[dataStorageId].getTwint().ueberweisungPersonAProperty());
     			addInputFieldWithLabel("Ueberweisung Person B", "Input 4", appStorage[dataStorageId].getTwint().ueberweisungPersonBProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.AUTO.label)) {
+    		} else if (selectedLabels[3].getText().equals(AUTO.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getAuto().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getAuto().kostenEffektivProperty());
     			addInputFieldWithLabel("Reparatur, Versicherung", "Input 3", appStorage[dataStorageId].getAuto().reparaturVersicherungProperty());
     			addInputFieldWithLabel("Unerwartete Kosten", "Input 4", appStorage[dataStorageId].getAuto().unerwarteteKostenProperty());
     			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.VERSCHIEDENES.label)) {
+    		} else if (selectedLabels[3].getText().equals(VERSCHIEDENES.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getVerschiedenes().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getVerschiedenes().kostenEffektivProperty());
     			addInputFieldWithLabel("Internet, Netflix, Mobile", "Input 3", appStorage[dataStorageId].getVerschiedenes().internetNetflixMobileProperty());
@@ -198,16 +209,16 @@ public class Main extends Application {
     			addInputFieldWithLabel("Hobbys Erwachsene", "Input 7", appStorage[dataStorageId].getVerschiedenes().hobbysErwachseneProperty());
     			addInputFieldWithLabel("Unerwartete Kosten", "Input 8", appStorage[dataStorageId].getVerschiedenes().unerwarteteKostenProperty());
     			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.STEUERN.label)) {
+    		} else if (selectedLabels[3].getText().equals(STEUERN.stringValue)) {
     			addInputFieldWithLabel("Steuern gesamt", "Input 1", appStorage[dataStorageId].getSteuern().steuernGesamtProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.FERIEN.label)) {
+    		} else if (selectedLabels[3].getText().equals(FERIEN.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getFerien().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getFerien().kostenEffektivProperty());
     			addInputFieldWithLabel("Unterkunft", "Input 3", appStorage[dataStorageId].getFerien().unterkunftProperty());
     			addInputFieldWithLabel("Ausfluege, Essen, Diverses", "Input 4", appStorage[dataStorageId].getFerien().ausfluegeEssenDiversesProperty());
     			addInputFieldWithLabel("Unerwartete Kosten", "Input 5", appStorage[dataStorageId].getFerien().unerwarteteKostenProperty());
     			addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
-    		} else if (selectedLabels[3].getText().equals(Category.AUSGABEN_EC_ODER_KREDITKARTE.label)) {
+    		} else if (selectedLabels[3].getText().equals(AUSGABEN_EC_ODER_KREDITKARTE.stringValue)) {
     			addInputFieldWithLabel("Kosten geplant", "Input 1", appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenGeplantProperty());
     			addInputFieldWithLabel("Kosten effektiv", "Input 2", appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenEffektivProperty());
     			addInputFieldWithLabel("Unerwartete Rechnungen", "Input 3", appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteRechnungenProperty());

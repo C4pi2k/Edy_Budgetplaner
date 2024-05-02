@@ -12,10 +12,10 @@ public enum Category {
 	FERIEN("Ferien"),
 	AUSGABEN_EC_ODER_KREDITKARTE("Ausgaben EC- oder Kreditkarte");
 	
-	public final String label;
+	public final String stringValue;
 	
-	private Category(String label) {
-		this.label = label;
+	private Category(String stringValue) {
+		this.stringValue = stringValue;
 	}
 	
 }
