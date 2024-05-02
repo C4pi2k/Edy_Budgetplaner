@@ -1,4 +1,4 @@
 # Edy_Budgetplaner
 
-Wie setzt man JavaFX auf?
+How to setup JavaFX?
 https://youtu.be/nz8P528uGjk?si=D3xrGTyxmYyLu5ro
