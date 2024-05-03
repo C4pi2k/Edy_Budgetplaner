@@ -302,7 +302,7 @@ public class Main extends Application {
   // AI Declaration for addTextLimiter
   // Written by GPT 3.5, improved by me
 
-  //
+  // Method to limit an inputfield to 20 characters
   public void addTextLimiter(final TextField textField) {
     textField.textProperty().addListener(new ChangeListener<String>() {
       int maxLength = 20;
