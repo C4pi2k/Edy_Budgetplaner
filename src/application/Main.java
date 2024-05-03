@@ -37,7 +37,6 @@ public class Main extends Application {
       VERSICHERUNG_UND_VORSORGE.stringValue, TWINT.stringValue, AUTO.stringValue, VERSCHIEDENES.stringValue, STEUERN.stringValue,
       FERIEN.stringValue, AUSGABEN_EC_ODER_KREDITKARTE.stringValue };
 
-  private Label displayField;
   private Label[] selectedLabels;
   private VBox inputFieldsContainer;
   private DataStorage[] appStorage;
@@ -81,12 +80,8 @@ public class Main extends Application {
       inputFieldsContainer.setPadding(new Insets(10));
       inputFieldsContainer.setSpacing(10);
 
-      // Create display field
-      displayField = new Label();
-      displayField.setPadding(new Insets(10));
-
       // Add components to the root layout
-      VBox registersAndDisplay = new VBox(rowsContainer, displayField, inputFieldsContainer);
+      VBox registersAndDisplay = new VBox(rowsContainer, inputFieldsContainer);
       root.setTop(registersAndDisplay);
 
       primaryStage.show();
