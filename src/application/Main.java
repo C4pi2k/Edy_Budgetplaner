@@ -177,79 +177,79 @@ public class Main extends Application {
 
     if (selectedLabels[3] != null) {
       if (selectedLabels[3].getText().equals(EINNAHMEN_GESAMT_NETTO.stringValue)) {
-        addInputFieldWithLabel("Einnahmen gesamt (Netto) (Wert in CHF)", "",
+        addInputFieldWithLabel("Einnahmen gesamt (Netto) (Wert in CHF)",
             appStorage[dataStorageId].getEinnahmenGesamtNetto().einnahmenGesamtNettoProperty());
       } else if (selectedLabels[3].getText().equals(SPARZIEL.stringValue)) {
-        addInputFieldWithLabel("Sparziel gesamt (Wert in CHF)", "", appStorage[dataStorageId].getSparziel().sparzielGesamtProperty());
-        addInputFieldWithLabel("Sparziel effektiv (Wert in CHF)", "", appStorage[dataStorageId].getSparziel().sparzielEffektivProperty());
+        addInputFieldWithLabel("Sparziel gesamt (Wert in CHF)", appStorage[dataStorageId].getSparziel().sparzielGesamtProperty());
+        addInputFieldWithLabel("Sparziel effektiv (Wert in CHF)", appStorage[dataStorageId].getSparziel().sparzielEffektivProperty());
       } else if (selectedLabels[3].getText().equals(WOHNKOSTEN.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "", appStorage[dataStorageId].getWohnkosten().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten Wohnen effektiv (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getWohnkosten().kostenGeplantProperty());
+        addInputFieldWithLabel("Kosten Wohnen effektiv (Wert in CHF)",
             appStorage[dataStorageId].getWohnkosten().kostenEffektivProperty());
-        addInputFieldWithLabel("Wohn- und Nebenkosten (Wert in CHF)", "",
+        addInputFieldWithLabel("Wohn- und Nebenkosten (Wert in CHF)",
             appStorage[dataStorageId].getWohnkosten().wohnUndNebenkostenProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", "",
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
             appStorage[dataStorageId].getWohnkosten().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       } else if (selectedLabels[3].getText().equals(VERSICHERUNG_UND_VORSORGE.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().kostenEffektivProperty());
-        addInputFieldWithLabel("Krankenversicherung (Wert in CHF)", "",
+        addInputFieldWithLabel("Krankenversicherung (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().krankenVersicherungProperty());
-        addInputFieldWithLabel("Hausrat-, Hatfpflicht-, Rechtschutzversicherung (Wert in CHF)", "",
+        addInputFieldWithLabel("Hausrat-, Hatfpflicht-, Rechtschutzversicherung (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().hausratHatfpflichtRechtschutzversicherungProperty());
-        addInputFieldWithLabel("3. Säule (Wert in CHF)", "", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", "",
+        addInputFieldWithLabel("3. Säule (Wert in CHF)", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       } else if (selectedLabels[3].getText().equals(TWINT.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "", appStorage[dataStorageId].getTwint().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", "", appStorage[dataStorageId].getTwint().kostenEffektivProperty());
-        addInputFieldWithLabel("Ueberweisung Person A (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getTwint().kostenGeplantProperty());
+        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", appStorage[dataStorageId].getTwint().kostenEffektivProperty());
+        addInputFieldWithLabel("Ueberweisung Person A (Wert in CHF)",
             appStorage[dataStorageId].getTwint().ueberweisungPersonAProperty());
-        addInputFieldWithLabel("Ueberweisung Person B (Wert in CHF)", "",
+        addInputFieldWithLabel("Ueberweisung Person B (Wert in CHF)",
             appStorage[dataStorageId].getTwint().ueberweisungPersonBProperty());
       } else if (selectedLabels[3].getText().equals(AUTO.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "", appStorage[dataStorageId].getAuto().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", "", appStorage[dataStorageId].getAuto().kostenEffektivProperty());
-        addInputFieldWithLabel("Reparatur, Versicherung (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getAuto().kostenGeplantProperty());
+        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", appStorage[dataStorageId].getAuto().kostenEffektivProperty());
+        addInputFieldWithLabel("Reparatur, Versicherung (Wert in CHF)",
             appStorage[dataStorageId].getAuto().reparaturVersicherungProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", "", appStorage[dataStorageId].getAuto().unerwarteteKostenProperty());
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", appStorage[dataStorageId].getAuto().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       } else if (selectedLabels[3].getText().equals(VERSCHIEDENES.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "", appStorage[dataStorageId].getVerschiedenes().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", "", appStorage[dataStorageId].getVerschiedenes().kostenEffektivProperty());
-        addInputFieldWithLabel("Internet, Netflix, Mobile (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getVerschiedenes().kostenGeplantProperty());
+        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", appStorage[dataStorageId].getVerschiedenes().kostenEffektivProperty());
+        addInputFieldWithLabel("Internet, Netflix, Mobile (Wert in CHF)",
             appStorage[dataStorageId].getVerschiedenes().internetNetflixMobileProperty());
-        addInputFieldWithLabel("Schulgeld (Wert in CHF)", "", appStorage[dataStorageId].getVerschiedenes().schulgeldProperty());
-        addInputFieldWithLabel("Kinderbetreuung, Putzfrau (Wert in CHF)", "",
+        addInputFieldWithLabel("Schulgeld (Wert in CHF)", appStorage[dataStorageId].getVerschiedenes().schulgeldProperty());
+        addInputFieldWithLabel("Kinderbetreuung, Putzfrau (Wert in CHF)",
             appStorage[dataStorageId].getVerschiedenes().kinderbetreuungProperty());
-        addInputFieldWithLabel("Hobbys Kinder (Wert in CHF)", "", appStorage[dataStorageId].getVerschiedenes().hobbysKinderProperty());
-        addInputFieldWithLabel("Hobbys Erwachsene (Wert in CHF)", "Input 7",
+        addInputFieldWithLabel("Hobbys Kinder (Wert in CHF)", appStorage[dataStorageId].getVerschiedenes().hobbysKinderProperty());
+        addInputFieldWithLabel("Hobbys Erwachsene (Wert in CHF)",
             appStorage[dataStorageId].getVerschiedenes().hobbysErwachseneProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", "Input 8",
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
             appStorage[dataStorageId].getVerschiedenes().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       } else if (selectedLabels[3].getText().equals(STEUERN.stringValue)) {
-        addInputFieldWithLabel("Steuern gesamt (Wert in CHF)", "", appStorage[dataStorageId].getSteuern().steuernGesamtProperty());
+        addInputFieldWithLabel("Steuern gesamt (Wert in CHF)", appStorage[dataStorageId].getSteuern().steuernGesamtProperty());
       } else if (selectedLabels[3].getText().equals(FERIEN.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "", appStorage[dataStorageId].getFerien().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", "", appStorage[dataStorageId].getFerien().kostenEffektivProperty());
-        addInputFieldWithLabel("Unterkunft (Wert in CHF)", "", appStorage[dataStorageId].getFerien().unterkunftProperty());
-        addInputFieldWithLabel("Ausfluege, Essen, Diverses (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getFerien().kostenGeplantProperty());
+        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", appStorage[dataStorageId].getFerien().kostenEffektivProperty());
+        addInputFieldWithLabel("Unterkunft (Wert in CHF)", appStorage[dataStorageId].getFerien().unterkunftProperty());
+        addInputFieldWithLabel("Ausfluege, Essen, Diverses (Wert in CHF)",
             appStorage[dataStorageId].getFerien().ausfluegeEssenDiversesProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", "", appStorage[dataStorageId].getFerien().unerwarteteKostenProperty());
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", appStorage[dataStorageId].getFerien().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       } else if (selectedLabels[3].getText().equals(AUSGABEN_EC_ODER_KREDITKARTE.stringValue)) {
-        addInputFieldWithLabel("Kosten geplant (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten geplant (Wert in CHF)",
             appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", "",
+        addInputFieldWithLabel("Kosten effektiv (Wert in CHF)",
             appStorage[dataStorageId].getAusgabenECOderKreditkarte().kostenEffektivProperty());
-        addInputFieldWithLabel("Unerwartete Rechnungen (Wert in CHF)", "",
+        addInputFieldWithLabel("Unerwartete Rechnungen (Wert in CHF)",
             appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteRechnungenProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", "",
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
             appStorage[dataStorageId].getAusgabenECOderKreditkarte().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       }
@@ -291,10 +291,9 @@ public class Main extends Application {
   // Written by GPT 3.5, improved by me
 
   // Method to add an input field with label to the input fields container
-  private void addInputFieldWithLabel(String labelText, String inputPrompt, StringProperty property) {
+  private void addInputFieldWithLabel(String labelText, StringProperty property) {
     Label label = new Label(labelText);
     TextField textField = new TextField("");
-    textField.setPromptText(inputPrompt);
     textField.textProperty().bindBidirectional(property);
     inputFieldsContainer.getChildren().addAll(label, textField);
   }
