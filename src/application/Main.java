@@ -144,7 +144,7 @@ public class Main extends Application {
     container.getChildren().add(row);
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for createLabel
   // Written by GPT 3.5
 
   // Method to create a label with initial style
@@ -159,7 +159,7 @@ public class Main extends Application {
     return label;
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for updateInputFields
   // Mostly written by GPT 3.5. As mentioned in the AI Declaration for the start method, I created most of the method with GPT 3.5, yet the
   // handling of the data was made by myself.
 
@@ -184,12 +184,10 @@ public class Main extends Application {
         addInputFieldWithLabel("Sparziel effektiv (Wert in CHF)", appStorage[dataStorageId].getSparziel().sparzielEffektivProperty());
       } else if (selectedLabels[3].getText().equals(WOHNKOSTEN.stringValue)) {
         addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getWohnkosten().kostenGeplantProperty());
-        addInputFieldWithLabel("Kosten Wohnen effektiv (Wert in CHF)",
-            appStorage[dataStorageId].getWohnkosten().kostenEffektivProperty());
+        addInputFieldWithLabel("Kosten Wohnen effektiv (Wert in CHF)", appStorage[dataStorageId].getWohnkosten().kostenEffektivProperty());
         addInputFieldWithLabel("Wohn- und Nebenkosten (Wert in CHF)",
             appStorage[dataStorageId].getWohnkosten().wohnUndNebenkostenProperty());
-        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
-            appStorage[dataStorageId].getWohnkosten().unerwarteteKostenProperty());
+        addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)", appStorage[dataStorageId].getWohnkosten().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
       } else if (selectedLabels[3].getText().equals(VERSICHERUNG_UND_VORSORGE.stringValue)) {
         addInputFieldWithLabel("Kosten geplant (Wert in CHF)",
@@ -207,10 +205,8 @@ public class Main extends Application {
       } else if (selectedLabels[3].getText().equals(TWINT.stringValue)) {
         addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getTwint().kostenGeplantProperty());
         addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", appStorage[dataStorageId].getTwint().kostenEffektivProperty());
-        addInputFieldWithLabel("Ueberweisung Person A (Wert in CHF)",
-            appStorage[dataStorageId].getTwint().ueberweisungPersonAProperty());
-        addInputFieldWithLabel("Ueberweisung Person B (Wert in CHF)",
-            appStorage[dataStorageId].getTwint().ueberweisungPersonBProperty());
+        addInputFieldWithLabel("Ueberweisung Person A (Wert in CHF)", appStorage[dataStorageId].getTwint().ueberweisungPersonAProperty());
+        addInputFieldWithLabel("Ueberweisung Person B (Wert in CHF)", appStorage[dataStorageId].getTwint().ueberweisungPersonBProperty());
       } else if (selectedLabels[3].getText().equals(AUTO.stringValue)) {
         addInputFieldWithLabel("Kosten geplant (Wert in CHF)", appStorage[dataStorageId].getAuto().kostenGeplantProperty());
         addInputFieldWithLabel("Kosten effektiv (Wert in CHF)", appStorage[dataStorageId].getAuto().kostenEffektivProperty());
@@ -227,8 +223,7 @@ public class Main extends Application {
         addInputFieldWithLabel("Kinderbetreuung, Putzfrau (Wert in CHF)",
             appStorage[dataStorageId].getVerschiedenes().kinderbetreuungProperty());
         addInputFieldWithLabel("Hobbys Kinder (Wert in CHF)", appStorage[dataStorageId].getVerschiedenes().hobbysKinderProperty());
-        addInputFieldWithLabel("Hobbys Erwachsene (Wert in CHF)",
-            appStorage[dataStorageId].getVerschiedenes().hobbysErwachseneProperty());
+        addInputFieldWithLabel("Hobbys Erwachsene (Wert in CHF)", appStorage[dataStorageId].getVerschiedenes().hobbysErwachseneProperty());
         addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
             appStorage[dataStorageId].getVerschiedenes().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
@@ -256,7 +251,7 @@ public class Main extends Application {
     }
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for craftLabelWhenAllRowsSelected
   // Written by me
 
   private String craftLabelWhenAllRowsSelected() {
@@ -268,7 +263,7 @@ public class Main extends Application {
     }
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for findCurrentDataStorageInstance
   // Written by me
 
   // Method to handle the current combination of buttons selected and loading the actual dataset
@@ -287,7 +282,7 @@ public class Main extends Application {
     return currentDataStorage.getPosition();
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for addInputFieldWithLabel
   // Written by GPT 3.5, improved by me
 
   // Method to add an input field with label to the input fields container
@@ -298,7 +293,7 @@ public class Main extends Application {
     inputFieldsContainer.getChildren().addAll(label, textField);
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for addTwentyCharInputField
   // Written by me
 
   // Method to create inputfields that only measure twenty characters at max
@@ -309,7 +304,7 @@ public class Main extends Application {
     inputFieldsContainer.getChildren().addAll(textField);
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for addTextLimiter
   // Written by GPT 3.5, improved by me
 
   //
@@ -327,7 +322,7 @@ public class Main extends Application {
     });
   }
 
-  // AI Declaration for addRow
+  // AI Declaration for main
   // Written by GPT 3.5
 
   //
