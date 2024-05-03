@@ -198,7 +198,7 @@ public class Main extends Application {
             appStorage[dataStorageId].getVersicherungUndVorsorge().krankenVersicherungProperty());
         addInputFieldWithLabel("Hausrat-, Hatfpflicht-, Rechtschutzversicherung (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().hausratHatfpflichtRechtschutzversicherungProperty());
-        addInputFieldWithLabel("3. Säule (Wert in CHF)", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
+        addInputFieldWithLabel("3. Saeule (Wert in CHF)", appStorage[dataStorageId].getVersicherungUndVorsorge().dritteSaeuleProperty());
         addInputFieldWithLabel("Unerwartete Kosten (Wert in CHF)",
             appStorage[dataStorageId].getVersicherungUndVorsorge().unerwarteteKostenProperty());
         addTwentyCharInputField(appStorage[dataStorageId].getAusgabenECOderKreditkarte().freierTextProperty());
